@@ -1,4 +1,6 @@
+import sys
+
 def comprimento(raio):
     return round(2 * 3.14 * raio,2)
 
-print(comprimento(10))
+print(comprimento(float(sys.argv[1])))
