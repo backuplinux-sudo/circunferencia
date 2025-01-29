@@ -1,7 +1,7 @@
 import sys
 
 def comprimento(raio: float) -> float:
-    """Faz o cálculo do comprimento
+    """Faz o calculo do comprimento
 
     Args:
         raio (float): medida do raio a ser utilizada
