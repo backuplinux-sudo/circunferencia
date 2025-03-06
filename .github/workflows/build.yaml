@@ -5,12 +5,20 @@ on: workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
+    # env:
+    #   image-name: "teste-build"
 
     steps:
       - name: Baixar arquivos
         uses: actions/checkout@v4
 
       - name: Build da imagem
+        env:
+          image-name: "teste-build"
         run: |
-          docker image build -t teste-build:${{github.run_number}} .
+          docker image build -t ${{ env.image-name }}:${{ github.run_number }} .
           docker image ls
+
+      - name: Teste env do step
+        run: |
+          echo "image-name=${{ env.image-name }}"
