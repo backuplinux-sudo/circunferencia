@@ -15,7 +15,6 @@ jobs:
       - name: Build da imagem - manual
         run: |
           docker image build -t ${{ env.image-name }}:${{ github.run_number }}-manual .
-          docker image ls
 
       - name: Build da imagem - action
         uses: docker/build-push-action@v6
@@ -23,6 +22,6 @@ jobs:
           push: false
           tags: ${{ env.image-name }}:${{ github.run_number }}-action
 
-      - name: Teste env do step
+      - name: Verificar imagens
         run: |
-          echo "image-name=${{ env.image-name }}"
+          docker image ls
