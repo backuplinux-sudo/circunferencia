@@ -12,4 +12,4 @@ jobs:
     - name: Build da imagem
       run: |
         docker image build -t teste-build:1 .
-        docker image ls
+        docker image ls 
