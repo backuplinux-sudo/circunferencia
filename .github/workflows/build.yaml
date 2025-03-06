@@ -1,0 +1,15 @@
+name: Build image
+
+on: workflow_dispatch
+
+jobs:
+  runs-on: ubuntu-latest
+
+  steps:
+    - name: Baixar arquivos
+      uses: actions/checkout@v4
+
+    - name: Build da imagem
+      run: |
+        docker image build -t teste-build:1 .
+        docker image ls
