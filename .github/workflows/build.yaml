@@ -23,5 +23,4 @@ jobs:
           tags: ${{ env.image-name }}:${{ github.run_number }}-action
 
       - name: Verificar imagens
-        run: |
-          docker image ls
+        run: docker image ls
