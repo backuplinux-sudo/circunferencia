@@ -32,7 +32,10 @@ jobs:
 
       - name: teste
         run: |
-          docker container run ${{ env.image-name }}:${{ github.run_number }}-manual 2
-          resultado=$?
+          resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }}-manual 2)
+          if [ ${resultado} != "12.56" ]; then
+            exit 1
 
-          print(resultado=${resultado})
+          resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }}-manual 3)
+          if [ ${resultado} != "18.84" ]; then
+            exit 1
