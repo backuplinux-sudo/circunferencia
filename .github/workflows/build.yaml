@@ -15,29 +15,25 @@ jobs:
       - name: Baixar arquivos
         uses: actions/checkout@v4
 
-      - name: Build da imagem - manual
+      - name: Build da imagem
         run: |
-          docker image build -t ${{ env.image-name }}:${{ github.run_number }}-manual .
-
-      - name: Build da imagem - action
-        uses: docker/build-push-action@v6
-        with:
-          push: false
-          tags: ${{ env.image-name }}:${{ github.run_number }}-action
+          docker image build -t ${{ env.image-name }}:${{ github.run_number }} .
 
       - name: Verificar imagens
         run: |
           docker image ls
 
 
-      - name: teste
+      - name: Testes da função circunferencia
         run: |
-          resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }}-manual 2)
+          resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }} 2)
+          echo "resultado=${resultado}"
           if [ ${resultado} != "12.56" ]; then
             exit 1
           fi
 
-          resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }}-manual 3)
+          resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }} 3)
+          echo "resultado=${resultado}"
           if [ ${resultado} != "18.84" ]; then
             exit 1
           fi
