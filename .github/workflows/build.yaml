@@ -25,3 +25,11 @@ jobs:
       - name: Verificar imagens
         run: |
           docker image ls
+
+
+      - name: teste
+        run: |
+          docker container run circunferencia:1.0 2
+          resultado=$?
+
+          print(resultado=${resultado})
