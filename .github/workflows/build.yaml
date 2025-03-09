@@ -32,7 +32,7 @@ jobs:
 
       - name: teste
         run: |
-          docker container run circunferencia:1.0 2
+          docker container run ${{ env.image-name }}:${{ github.run_number }}-manual 2
           resultado=$?
 
           print(resultado=${resultado})
