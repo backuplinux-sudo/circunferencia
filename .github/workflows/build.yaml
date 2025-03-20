@@ -33,7 +33,7 @@ jobs:
           resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }} 2)
 
           if [ ${resultado} != "12.56" ]; then
-            echo "::error ::O resultado esperado era 12.56 e o resultado foi ${resultado}"
+            echo "::error::O resultado esperado era 12.56 e o resultado foi ${resultado}"
             exit 1
           fi
           echo "::endgroup::"
