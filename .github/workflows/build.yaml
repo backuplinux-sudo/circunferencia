@@ -25,11 +25,9 @@ jobs:
 
       - name: Testes da função circunferencia
         run: |
-          echo "::info ::Iniciando os testes"
+          echo "::notice ::Iniciando os testes"
 
           echo "::warning ::Esse é um warning"
-
-          echo "::debug::Mensagem para ajudar a verificar algum problema"
 
           echo "::group::Teste com Valor 2"
           resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }} 2)
