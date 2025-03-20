@@ -25,7 +25,7 @@ jobs:
 
       - name: Testes da função circunferencia
         run: |
-          echo "::info ::Iniciando os testes"
+          echo "::info::Iniciando os testes"
 
           echo "::warning ::Esse é um warning"
 
