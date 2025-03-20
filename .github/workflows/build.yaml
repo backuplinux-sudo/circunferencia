@@ -31,16 +31,20 @@ jobs:
 
           echo "::debug::Mensagem para ajudar a verificar algum problema"
 
+          echo "::group::Teste com Valor 2"
           resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }} 2)
 
           if [ ${resultado} != "12.56" ]; then
             echo "::error ::O resultado esperado era 12.56 e o resultado foi ${resultado}"
             exit 1
           fi
+          echo "::endgroup::"
 
+          echo "::group::Teste com Valor 3"
           resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }} 3)
 
           if [ ${resultado} != "18.84" ]; then
             echo "::error ::O resultado esperado era 18.84 e o resultado foi ${resultado}"
             exit 1
           fi
+          echo "::endgroup::"
