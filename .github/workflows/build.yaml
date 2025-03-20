@@ -25,24 +25,24 @@ jobs:
 
       - name: Testes da função circunferencia
         run: |
-          echo "::notice ::Iniciando os testes"
+          primeiro_valor="2"
+          primeiro_resultado="12.56"
+          echo "::group::Teste com Valor ${primeiro_valor}"
+          resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }} ${primeiro_valor})
 
-          echo "::warning ::Esse é um warning"
-
-          echo "::group::Teste com Valor 2"
-          resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }} 2)
-
-          if [ ${resultado} != "12.56" ]; then
-            echo "::error::O resultado esperado era 12.56 e o resultado foi ${resultado}"
+          if [ ${resultado} != ${primeiro_resultado} ]; then
+            echo "::error::O resultado esperado era ${primeiro_resultado} e o resultado foi ${resultado}"
             exit 1
           fi
           echo "::endgroup::"
 
-          echo "::group::Teste com Valor 3"
+          segundo_valor="3"
+          segundo_resultado="18.84"
+          echo "::group::Teste com Valor ${segundo_valor}"
           resultado=$(docker container run ${{ env.image-name }}:${{ github.run_number }} 3)
 
-          if [ ${resultado} != "18.84" ]; then
-            echo "::error ::O resultado esperado era 18.84 e o resultado foi ${resultado}"
+          if [ ${resultado} != ${segundo_resultado} ]; then
+            echo "::error ::O resultado esperado era ${segundo_resultado} e o resultado foi ${resultado}"
             exit 1
           fi
           echo "::endgroup::"
