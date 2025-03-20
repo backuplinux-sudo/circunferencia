@@ -34,6 +34,7 @@ jobs:
             echo "::error::O resultado esperado era ${primeiro_resultado} e o resultado foi ${resultado}"
             exit 1
           fi
+          echo "A verificação com o valor ${primeiro_valor} retornou o valor esperado de ${primeiro_resultado}"
           echo "::endgroup::"
 
           segundo_valor="3"
@@ -45,4 +46,5 @@ jobs:
             echo "::error ::O resultado esperado era ${segundo_resultado} e o resultado foi ${resultado}"
             exit 1
           fi
+          echo "A verificação com o valor ${segundo_valor} retornou o valor esperado de ${segundo_resultado}"
           echo "::endgroup::"
