@@ -4,11 +4,26 @@ on:
   push:
     branches:
       - 'main'
-    pull_request:
-      branches:
-        - 'main'
 
 jobs:
+  testes:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Testes no código
+        run: |
+          valor="4"
+          resultado_esperado="25.12"
+          echo "::group::Teste do código com o valor ${valor}"
+          resultado=$(python3 app.py 4)
+
+          if [ ${resultado} != ${resultado_esperado} ]; then
+            echo "::error::O resultado esperado era ${resultado_esperado} e o resultado foi ${resultado}"
+            exit 1
+          fi
+          echo "A verificação com o valor ${valor} retornou o valor esperado de ${resultado_esperado}"
+          echo "::endgroup::"
+
   build:
     runs-on: ubuntu-latest
     env:
