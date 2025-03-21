@@ -28,6 +28,7 @@ jobs:
           echo "::endgroup::"
 
   build:
+    needs: testes
     runs-on: ubuntu-latest
     env:
       image-name: "teste-build"
