@@ -10,6 +10,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Baixar arquivos
+        uses: actions/checkout@v4
+
       - name: Testes no código
         run: |
           valor="4"
