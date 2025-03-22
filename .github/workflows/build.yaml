@@ -19,11 +19,6 @@ jobs:
         with:
           python-version: '3.13.1'
 
-      - name: Mostrar versão
-        run: |
-          python3 --version
-          exit 1
-
       - name: Baixar arquivos
         uses: actions/checkout@v4
 
