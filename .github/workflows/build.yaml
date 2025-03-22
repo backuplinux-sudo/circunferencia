@@ -1,9 +1,13 @@
 name: Build image
 
-on: 
+on:
   push:
     branches:
       - 'main'
+    paths:
+      - 'Dockerfile'
+      - '**.py'
+  workflow_dispatch:
 
 jobs:
   testes:
