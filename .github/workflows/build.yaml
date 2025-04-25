@@ -17,7 +17,7 @@ jobs:
       image-name: "teste-build"
     strategy:
       matrix:
-        runner: ['ubuntu-22.04', 'ubuntu-24.04']
+        runner: ['ubuntu-20.04', 'ubuntu-22.04', 'ubuntu-24.04']
         imagem-python: ['3.11.10-alpine3.20', '3.12.10-alpine3.20', '3.13.3-alpine3.20']
 
     steps:
