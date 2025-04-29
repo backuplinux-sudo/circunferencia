@@ -25,7 +25,7 @@ jobs:
 
     steps:
       - name: Versão python
-        run: python3 --version
+        run: python --version
 
       - name: Baixar arquivos
         uses: actions/checkout@v4
