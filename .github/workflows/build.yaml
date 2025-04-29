@@ -26,6 +26,9 @@ jobs:
     #         imagem-python: 3.11.10-alpine3.20
     #         numeros: 1
     #         letras: c
+    strategy:
+      matrix:
+        imagem-python: ['3.11.10-alpine3.20']
 
 
     steps:
