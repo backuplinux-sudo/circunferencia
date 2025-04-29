@@ -24,8 +24,8 @@ jobs:
       imagem-python: '3.11.10-alpine3.20'
 
     steps:
-      - name: Versão python
-        run: python --version
+      - name: Versão docker
+        run: docker version
 
       - name: Baixar arquivos
         uses: actions/checkout@v4
@@ -76,5 +76,5 @@ jobs:
   teste-versao:
     runs-on: ubuntu-latest
     steps:
-      - name: Versão python
-        run: python3 --version
+      - name: Versão docker
+        run: docker version
