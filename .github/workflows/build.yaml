@@ -12,24 +12,17 @@ on:
 
 jobs:
   build:
-    runs-on: windows-2019
+    runs-on: ubuntu-latest
+    container:
+      image: teste
+      env:
+        imagem-python: '3.11.10-alpine3.20'
+      ports:
+        - 80:80
+      volumes:
+        - volume:/volume_mount
     env:
       image-name: "teste-build"
-    # strategy:
-    #   matrix:
-    #     numeros: [1, 2, 3]
-    #     letras: ['a', 'b', 'c']
-    #     runner: ['ubuntu-20.04', 'ubuntu-22.04', 'ubuntu-24.04']
-    #     imagem-python: ['3.11.10-alpine3.20', '3.12.10-alpine3.20', '3.13.3-alpine3.20']
-    #     include:
-    #       - runner: windows-2019
-    #         imagem-python: 3.11.10-alpine3.20
-    #         numeros: 1
-    #         letras: c
-    strategy:
-      matrix:
-        imagem-python: ['3.11.10-alpine3.20']
-
 
     steps:
       - name: Baixar arquivos
@@ -37,28 +30,27 @@ jobs:
 
       - name: Alterar Dockerfile
         run: |
-          cp Dockerfile Dockerfile-${{ matrix.imagem-python }}
-          sed -i 's,IMAGEM_BASE,${{ matrix.imagem-python }},g' Dockerfile-${{ matrix.imagem-python }}
-          cat Dockerfile-${{ matrix.imagem-python }}
-
+          cp Dockerfile Dockerfile-${{ env.imagem-python }}
+          sed -i 's,IMAGEM_BASE,${{ env.imagem-python }},g' Dockerfile-${{ env.imagem-python }}
+          cat Dockerfile-${{ env.imagem-python }}
 
       - name: Build da imagem
         run: |
-          docker image build -t ${{ env.image-name }}:${{matrix.imagem-python}}-${{ github.run_number }} -f Dockerfile-${{ matrix.imagem-python }} .
+          docker image build -t ${{ env.image-name }}:${{env.imagem-python}}-${{ github.run_number }} -f Dockerfile-${{ env.imagem-python }} .
 
       - name: Verificar imagens
         run: |
           docker image ls
 
       - name: Inspecionar imagem
-        run: docker image inspect ${{ env.image-name }}:${{matrix.imagem-python}}-${{ github.run_number }}
+        run: docker image inspect ${{ env.image-name }}:${{env.imagem-python}}-${{ github.run_number }}
 
       - name: Testes da função circunferencia
         run: |
           primeiro_valor="2"
           primeiro_resultado="12.56"
           echo "::group::Teste com Valor ${primeiro_valor}"
-          resultado=$(docker container run ${{ env.image-name }}:${{matrix.imagem-python}}-${{ github.run_number }} ${primeiro_valor})
+          resultado=$(docker container run ${{ env.image-name }}:${{env.imagem-python}}-${{ github.run_number }} ${primeiro_valor})
 
           if [ ${resultado} != ${primeiro_resultado} ]; then
             echo "::error::O resultado esperado era ${primeiro_resultado} e o resultado foi ${resultado}"
@@ -70,7 +62,7 @@ jobs:
           segundo_valor="3"
           segundo_resultado="18.84"
           echo "::group::Teste com Valor ${segundo_valor}"
-          resultado=$(docker container run ${{ env.image-name }}:${{matrix.imagem-python}}-${{ github.run_number }} ${segundo_valor})
+          resultado=$(docker container run ${{ env.image-name }}:${{env.imagem-python}}-${{ github.run_number }} ${segundo_valor})
 
           if [ ${resultado} != ${segundo_resultado} ]; then
             echo "::error ::O resultado esperado era ${segundo_resultado} e o resultado foi ${resultado}"
