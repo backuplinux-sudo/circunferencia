@@ -23,6 +23,8 @@ jobs:
         imagem-python: ['3.11.10-alpine3.20', '3.12.10-alpine3.20', '3.13.3-alpine3.20']
         include:
           - runner: windows-2019
+            imagem-python: 3.11.10-alpine3.20
+            numeros: 1
             letras: c
 
 
