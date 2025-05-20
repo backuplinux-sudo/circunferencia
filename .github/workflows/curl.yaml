@@ -12,8 +12,8 @@ jobs:
       pagina_web:
         image: httpd
         ports:
-          - 8080:80
+          - 80:80
 
     steps:
       - name: Teste curl
-        run: curl pagina_web:8080
+        run: curl 127.0.0.1
