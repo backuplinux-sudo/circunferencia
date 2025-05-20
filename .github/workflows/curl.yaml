@@ -8,6 +8,11 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: alpine/curl
+    services:
+      pagina_web:
+        image: httpd
+        ports:
+          - 8080:80
 
     steps:
       - name: Teste curl
