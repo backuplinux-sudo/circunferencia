@@ -6,8 +6,8 @@ on:
 jobs:
   teste:
     runs-on: ubuntu-latest
-    container:
-      image: alpine/curl
+    # container:
+    #   image: alpine/curl
     services:
       pagina_web:
         image: httpd
@@ -16,4 +16,4 @@ jobs:
 
     steps:
       - name: Teste curl
-        run: curl 127.0.0.1
+        run: curl pagina_web
