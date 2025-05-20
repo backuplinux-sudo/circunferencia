@@ -16,4 +16,4 @@ jobs:
 
     steps:
       - name: Teste curl
-        run: curl localhost:8080
+        run: curl pagina_web:8080
