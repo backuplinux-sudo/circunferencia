@@ -16,4 +16,4 @@ jobs:
 
     steps:
       - name: Teste curl
-        run: curl pagina_web
+        run: curl localhost
