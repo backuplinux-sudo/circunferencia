@@ -1,0 +1,14 @@
+name: Teste curl
+
+on:
+  workflow_dispatch
+
+jobs:
+  teste:
+    runs-on: ubuntu-latest
+    container:
+      image: alpine/curl
+
+    steps:
+      - name: Teste curl
+        run: curl localhost:8080
