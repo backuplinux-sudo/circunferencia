@@ -1,15 +1,8 @@
 name: Testando
 
 on:
-  push:
-    branches:
-      - 'main'
-    paths:
-      - 'Dockerfile'
-      - '**.py'
-      - '.github/**'
+  workflow_dispatch:
 
-      
 jobs:
   testando123:
     runs-on: ubuntu-latest
