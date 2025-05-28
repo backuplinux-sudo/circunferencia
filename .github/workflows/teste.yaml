@@ -1,11 +1,10 @@
-name: Testando
+name: Problema
 
 on:
   workflow_dispatch:
 
 jobs:
-  testando123:
+  job_problema:
     runs-on: ubuntu-latest
     steps:
-      - name: Versão docker
-        run: docker version
+      - run: ls
