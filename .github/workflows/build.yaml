@@ -70,4 +70,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Versão docker
-        run: docker version
+        run: doker version
