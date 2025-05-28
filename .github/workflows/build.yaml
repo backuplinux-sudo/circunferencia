@@ -12,12 +12,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: python:3.11.10-alpine3.20 #docker:latest
-      ports:
-        - 80:80
-      volumes:
-        - volume:/volume_mount
     env:
       image-name: "teste-build"
       imagem-python: '3.11.10-alpine3.20'
